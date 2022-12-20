@@ -1,9 +1,11 @@
+let existingSDK = null
 export function initSDK(src) {
   const SDKId = 'airwallex-payouts-web-sdk'
   return new Promise((resolve, reject) => {
-    const existingSDK = document.getElementById(SDKId)
-    if (existingSDK) resolve(existingSDK)
-    else {
+    const hasScript = document.getElementById(SDKId)
+    if (hasScript) {
+      if (existingSDK) resolve(existingSDK)
+    } else {
       const script = document.createElement('script')
       script.type = 'text/javascript'
       script.id = SDKId
