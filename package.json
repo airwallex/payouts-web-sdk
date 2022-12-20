@@ -1,0 +1,22 @@
+{
+  "name": "@airwallex/payouts-web-sdk",
+  "version": "0.0.1",
+  "description": "Payouts web SDK",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/airwallex/payouts-web-sdk.git"
+  },
+  "keywords": [
+    "SDK"
+  ],
+  "author": "Zihao Li",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/airwallex/payouts-web-sdk/issues"
+  },
+  "homepage": "https://github.com/airwallex/payouts-web-sdk#readme"
+}

@@ -1,0 +1,22 @@
+variables:
+cache:
+  key:
+    files:
+      - yarn.lock
+      - package.json
+  paths:
+    - .yarn
+    - node_modules
+stages:
+  - publish-npm-package
+# Publish npm package
+publish-npm-package:
+  image: node:lts-alpine
+  stage: publish-npm-package
+  only:
+    - master
+  when: manual
+  script:
+    - cat package.json
+    - cat .npmrc
+    - npm publish
