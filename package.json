@@ -11,8 +11,13 @@
     "url": "git+https://github.com/airwallex/payouts-web-sdk.git"
   },
   "keywords": [
+    "Airwallex",
+    "Payouts",
     "SDK"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "Zihao Li",
   "license": "ISC",
   "bugs": {
