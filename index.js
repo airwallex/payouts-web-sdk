@@ -9,7 +9,7 @@ export const loadScript = () => {
       script.id = ElEMENT_ID
       script.async = true
       script.src =
-        'https://static-staging.airwallex.com/widgets/hosted-transfer/sdk/v0/index.js'
+        'https://static.airwallex.com/widgets/hosted-transfer/sdk/v0/index.js'
       script.addEventListener('load', async () => {
         resolve(window.AirwallexHostedTransfer.default)
       })
