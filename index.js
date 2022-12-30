@@ -1,24 +1,34 @@
-let existingSDK = null
-export function initSDK(src) {
-  const SDKId = 'airwallex-payouts-web-sdk'
-  return new Promise((resolve, reject) => {
-    const hasScript = document.getElementById(SDKId)
-    if (hasScript) {
-      if (existingSDK) resolve(existingSDK)
-    } else {
+const ElEMENT_ID = 'hosted-transfer-sdk'
+
+export const loadScript = () => {
+  const sdk = window?.AirwallexHostedTransfer?.default
+  if (!sdk) {
+    return new Promise((resolve, reject) => {
       const script = document.createElement('script')
       script.type = 'text/javascript'
-      script.id = SDKId
+      script.id = ElEMENT_ID
       script.async = true
-      script.src = src
-      script.addEventListener('load', () => {
-        const SDK = window.AirwallexHostedTransfer.default
-        resolve(SDK)
+      script.src =
+        'https://static-staging.airwallex.com/widgets/hosted-transfer/sdk/v0/index.js'
+      script.addEventListener('load', async () => {
+        resolve(window.AirwallexHostedTransfer.default)
       })
-      script.addEventListener('error', reject)
       document.getElementsByTagName('head')[0].appendChild(script)
-    }
-  })
+      setTimeout(() => {
+        reject('Load hosted transfer sdk error!')
+      }, 15 * 1000)
+    })
+  }
+  return sdk
 }
 
-export default initSDK
+export const removeScript = () => {
+  const existingSdk =
+    document.querySelector < HTMLScriptElement > `#${ElEMENT_ID}`
+  if (existingSdk) {
+    existingSdk.remove()
+    window.AirwallexHostedTransfer = undefined
+  }
+}
+
+export default { loadScript, removeScript }
