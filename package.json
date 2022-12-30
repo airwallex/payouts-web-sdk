@@ -1,6 +1,6 @@
 {
   "name": "@airwallex/payouts-web-sdk",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Payouts web SDK",
   "main": "index.js",
   "scripts": {
