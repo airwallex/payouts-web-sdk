@@ -1,11 +1,9 @@
 {
-  "branches": [
-    "master"
-  ],
+  "branches": ["master"],
   "tagFormat": "v${version}",
   "plugins": [
     "@semantic-release/commit-analyzer",
-    "@semantic-release/gitlab",
+    "@semantic-release/github",
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
     "@semantic-release/npm",
