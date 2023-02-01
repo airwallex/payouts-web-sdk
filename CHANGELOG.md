@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/airwallex/payouts-web-sdk/compare/v1.0.2...v1.0.3) (2023-02-01)
+
+
+### Bug Fixes
+
+* [GLOB-471] ensure new line in npmrc ([#11](https://github.com/airwallex/payouts-web-sdk/issues/11)) ([f79b3f2](https://github.com/airwallex/payouts-web-sdk/commit/f79b3f29909d81180095f015916c078b3e7b4fe0))
+
 ## [1.0.2](https://github.com/airwallex/payouts-web-sdk/compare/v1.0.1...v1.0.2) (2023-02-01)
 
 
