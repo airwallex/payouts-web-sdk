@@ -43,7 +43,7 @@ test:
     paths:
       - coverage
 
-release:
+publish-to-npm:
   stage: create-release
   rules:
     - if: $CI_COMMIT_BRANCH == 'master'
@@ -54,3 +54,14 @@ release:
     - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> .npmrc
     - yarn install --frozen-lockfile
     - yarn release
+
+publish-to-github:
+  stage: create-release
+  rules:
+    - if: $CI_COMMIT_BRANCH == 'master'
+      when: manual
+  script:
+    - echo "@airwallex:registry=https://npm.pkg.github.com/" >> .npmrc
+    - echo "//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}" >> .npmrc
+    - yarn install --frozen-lockfile
+    - yarn publish
