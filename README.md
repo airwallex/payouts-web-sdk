@@ -31,13 +31,14 @@ await init(options);
 ### Usage/Examples
 
 ```ts
-// initialize window.AirwallexOnboarding
+import { init } from '@airwallex/payouts-web-sdk';
+
 await init({
   langKey: 'en',
   env: 'prod',
-  authCode: 'x4D7A7wOSQvoygpwqweZpG0GFHTcQfVPBTZoKV7EibgH',
-  clientId: 'BIjjMYsYTPuRqnkEloSvvf',
-  codeVerifier: '~wh344Lea1FsCMVH39Fn9R2~nqq2uyD4wbvG9XCzWRxd0sZh9MFiF9gSVkM0C-ZvrdtjBFA6Cw1EvCpJcIjaeXg1-BXCfZd25ZmvuYZAqZtjJQA3NAa~7X1sgEfbMZJwQ',
+  authCode: '<authCode>',
+  clientId: '<clientId>',
+  codeVerifier: '<codeVerifier>',
 });
 ```
 
@@ -73,6 +74,7 @@ const element = createElement('payoutForm', options);
 |----------------|--------|----------|--------------|-------------------------------------|
 | `defaultValues`  | Object | false    | undefined    | Default values to render payoutForm |
 | `customizations` | Object | false    | undefined    | Customization on component          |
+| `theme` | Object | false    | undefined    | A custom color theme config could be provided          |
 
 
 #### `defaultValues` object properties:
@@ -154,6 +156,7 @@ const element = createElement('beneficiaryForm', options);
 |----------------|--------|----------|--------------|-------------------------------------|
 | `defaultValues`  | Object | false    | undefined    | Default values to render payoutForm |
 | `customizations` | Object | false    | undefined    | Customization on component          |
+| `theme` | Object | false    | undefined    | A custom color theme config could be provided          |
 
 
 #### `defaultValues` object properties:
@@ -170,7 +173,6 @@ Customizations supports you to get customize on BeneficiaryForm
 | `layout`  | Object | false    | undefined    | Customize on rendering partial form |
 | `fields` | Object | false    | undefined    | Individual field config on disable editing or hidden, encouraged to provide default value when using fields property          |
 
-
 ```ts
 const type Customizations = {
   layout?: [
@@ -186,6 +188,66 @@ const type Customizations = {
   }
 }
 ```
+
+#### `field` object properties:
+
+Please refer to Payout Component part
+
+#### `layout` object properties:
+
+Beneficiary Form could be divided into three sections, including conditions, bankDetails and businessDetails, we provide layout customization which is able to render partial part form.
+
+Be aware bankDetails and businessDetails sections only work when the conditions part is fulfilled. 
+
+```ts
+import { createElement } from '@airwallex/payouts-web-sdk'
+
+// Only render conditions and bankDetails part
+const beneficiaryComponentElement = sdk.createElement('beneficiaryForm',{
+  customizations: {
+    layout: [
+      { name: 'conditions', hidden: false },
+      { name: 'bankDetails', hidden: false },
+      { name: 'businessDetails', hidden: true },
+    ]
+  }
+});
+
+// Only render conditions and businessDetails part
+const beneficiaryComponentElement = sdk.createElement('beneficiaryForm',{
+  customizations: {
+    layout: [
+      { name: 'conditions', hidden: false },
+      { name: 'bankDetails', hidden: true },
+      { name: 'businessDetails', hidden: false },
+    ]
+  }
+});
+
+// Only render bankDetails and businessDetails part
+// Requires conditions fields are all provided
+const beneficiaryComponentElement = sdk.createElement('beneficiaryForm',{
+  defaultValues: {
+    beneficiary: {
+      entity_type: 'COMPANY',
+      bank_details: {
+        account_currency: 'AUD',
+        bank_country_code: 'AU',
+        local_clearing_system: 'BANK_TRANSFER',
+      },
+    },
+    payment_methods: [LOCAL],
+  },
+  customizations: {
+    layout: [
+      { name: 'conditions', hidden: true },
+      { name: 'bankDetails', hidden: false },
+      { name: 'businessDetails', hidden: false },
+    ]
+  }
+});
+```
+
 
 
 ## Interact with `element` object
@@ -264,10 +326,33 @@ type OnFormState = {
 element.on('formState', (state: OnFormState) => void);
 ```
 
-### Trigger `submit` to get form Values
+### Get final payload from `submit` method
 
 When you are able to get formValues form element, trigger `submit` function will give you all form values
 
 ```ts
-  const values = await element.submit()
+  const results = await element.submit()
 ```
+
+### Payout Component
+
+#### Result payload
+| Property       | Type           | Description                                                                                                                  |
+|----------------|----------------|------------------------------------------------------------------------------------------------------------------------------|
+| values         | Object         | Final form values                                                                                                            |
+| errors         | {code: string} | When the form interact with errors, but triggers submit method, an errors object will also returned                          |
+| additionalInfo | Object         | This includes additional info from payoutForm components, which might be helpful for you get finalize request payout payload |
+
+#### `additionalInfo` object properties
+| Property | Type                                                                 | Description                                                                            |
+|----------|----------------------------------------------------------------------|----------------------------------------------------------------------------------------|
+| reasons  | {label: string; value: string}[]                                     | A list of reasons needed to be choose while creating a payout with current form values |
+| quote    | {   id: string;   validity: { validFrom: string; validTo: string } } | A quote info used in Payout Component                                                  |
+
+
+### Beneficiary Component
+
+| Property       | Type           | Description                                                                                                                  |
+|----------------|----------------|------------------------------------------------------------------------------------------------------------------------------|
+| values         | Object         | Final form values                                                                                                            |
+| errors         | {code: string} | When the form interact with errors, but triggers submit method, an errors object will also returned                          |
