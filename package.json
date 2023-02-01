@@ -24,6 +24,7 @@
   "scripts": {
     "dev": "yarn build --watch",
     "build": "tsup src/index.ts --format cjs,esm --dts",
+    "lint": "eslint src/**",
     "test": "jest",
     "release": "semantic-release",
     "prepare": "husky install"
