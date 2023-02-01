@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/airwallex/payouts-web-sdk/compare/v1.0.0...v1.0.1) (2023-02-01)
+
+
+### Bug Fixes
+
+* [GLOB-471] add timestamp to prevent cache ([#8](https://github.com/airwallex/payouts-web-sdk/issues/8)) ([7d839f2](https://github.com/airwallex/payouts-web-sdk/commit/7d839f26400016d9fd98d27691ba69b6a25150a1))
+
 # 1.0.0 (2023-02-01)
 
 
