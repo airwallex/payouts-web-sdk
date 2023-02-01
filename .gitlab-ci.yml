@@ -1,5 +1,5 @@
 default:
-  image: node:14.19.0
+  image: node:16.14.0
 
 variables:
   KUBERNETES_CPU_REQUEST: 4
