@@ -24,12 +24,17 @@
   "scripts": {
     "dev": "yarn build --watch",
     "build": "tsup src/index.ts --format cjs,esm --dts",
+    "test": "jest",
+    "release": "semantic-release",
     "prepare": "husky install"
   },
   "devDependencies": {
     "@gtpn/eslint-config-progressive": "^0.6.0",
+    "@types/jest": "^29.4.0",
     "eslint": "^8.33.0",
     "husky": "^8.0.0",
+    "jest": "^29.4.1",
+    "jest-environment-jsdom": "^29.4.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "tsup": "^6.5.0",
