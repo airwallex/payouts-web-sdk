@@ -19,6 +19,7 @@ cache:
 stages:
   - build-and-test
   - create-release
+  - sync
 
 build:
   stage: build-and-test
@@ -43,7 +44,7 @@ test:
     paths:
       - coverage
 
-publish-to-npm:
+release:
   stage: create-release
   rules:
     - if: $CI_COMMIT_BRANCH == 'master'
@@ -55,10 +56,10 @@ publish-to-npm:
     - yarn install --frozen-lockfile
     - yarn release
 
-publish-to-github:
-  stage: create-release
+release-to-github:
+  stage: sync
   rules:
-    - if: $CI_COMMIT_BRANCH == 'master'
+    - if: $CI_COMMIT_TAG
       when: manual
   script:
     - echo "@airwallex:registry=https://npm.pkg.github.com/" >> .npmrc
