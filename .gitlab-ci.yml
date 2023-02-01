@@ -56,5 +56,9 @@ release:
   rules:
     - if: $CI_COMMIT_BRANCH == 'master'
       when: manual
+  before_script:
+    - apt-get update && apt-get install -y --no-install-recommends git-core ca-certificates
   script:
+    - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> .npmrc
+    - yarn install --frozen-lockfile
     - yarn release
