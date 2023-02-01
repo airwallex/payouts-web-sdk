@@ -1,4 +1,12 @@
+default:
+  image: node:16.14.0
+
 variables:
+  KUBERNETES_CPU_REQUEST: 4
+  KUBERNETES_CPU_LIMIT: 4
+  KUBERNETES_MEMORY_REQUEST: 8Gi
+  KUBERNETES_MEMORY_LIMIT: 8Gi
+
 cache:
   key:
     files:
@@ -7,16 +15,42 @@ cache:
   paths:
     - .yarn
     - node_modules
+
 stages:
-  - publish-npm-package
-# Publish npm package
-publish-npm-package:
-  image: node:lts-alpine
-  stage: publish-npm-package
-  only:
-    - master
-  when: manual
+  - build-and-test
+  - create-release
+
+build:
+  stage: build-and-test
   script:
-    - cat package.json
-    - cat .npmrc
-    - npm publish
+    - pwd
+    - yarn install --frozen-lockfile
+    - yarn build
+  artifacts:
+    paths:
+      - dist
+      - node_modules
+
+test:
+  stage: build-and-test
+  coverage: /All\sfiles.*?\s+(\d+.\d+)/
+  script:
+    - pwd
+    - yarn install --frozen-lockfile
+    - yarn lint
+    - yarn test
+  artifacts:
+    paths:
+      - coverage
+
+release:
+  stage: create-release
+  rules:
+    - if: $CI_COMMIT_BRANCH == 'master'
+      when: manual
+  before_script:
+    - apt-get update && apt-get install -y --no-install-recommends git-core ca-certificates
+  script:
+    - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> .npmrc
+    - yarn install --frozen-lockfile
+    - yarn release
