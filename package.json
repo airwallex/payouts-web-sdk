@@ -1,27 +1,61 @@
 {
   "name": "@airwallex/payouts-web-sdk",
   "version": "0.0.2",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "description": "Payouts web SDK",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "author": "Zihao Li",
+  "license": "ISC",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/airwallex/payouts-web-sdk.git"
   },
+  "homepage": "https://github.com/airwallex/payouts-web-sdk#readme",
+  "bugs": {
+    "url": "https://github.com/airwallex/payouts-web-sdk/issues"
+  },
   "keywords": [
     "Airwallex",
     "Payouts",
-    "SDK"
+    "SDK",
+    "widget"
+  ],
+  "scripts": {
+    "dev": "yarn build --watch",
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@gtpn/eslint-config-progressive": "^0.6.0",
+    "eslint": "^8.33.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "tsup": "^6.5.0",
+    "typescript": "^4.9.5"
+  },
+  "files": [
+    "dist"
   ],
   "publishConfig": {
     "access": "public"
   },
-  "author": "Zihao Li",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/airwallex/payouts-web-sdk/issues"
+  "prettier": {
+    "trailingComma": "es5",
+    "semi": true,
+    "singleQuote": true,
+    "endOfLine": "lf",
+    "printWidth": 80
   },
-  "homepage": "https://github.com/airwallex/payouts-web-sdk#readme"
+  "lint-staged": {
+    "src/**/*.{js?(x),ts?(x)}": [
+      "prettier --write"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "@gtpn/eslint-config-progressive"
+    ]
+  }
 }
