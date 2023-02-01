@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/airwallex/payouts-web-sdk/compare/v1.0.1...v1.0.2) (2023-02-01)
+
+
+### Bug Fixes
+
+* [GLOB-471] add publish to github job ([#9](https://github.com/airwallex/payouts-web-sdk/issues/9)) ([b1a175d](https://github.com/airwallex/payouts-web-sdk/commit/b1a175d4fbc698e8b8aef89612497cb0e1bee199))
+* [GLOB-471] sync package to github on tag pipeline ([#10](https://github.com/airwallex/payouts-web-sdk/issues/10)) ([2837860](https://github.com/airwallex/payouts-web-sdk/commit/283786011c9ebbbfd432bf130e2df7c04933009b))
+
 ## [1.0.1](https://github.com/airwallex/payouts-web-sdk/compare/v1.0.0...v1.0.1) (2023-02-01)
 
 
