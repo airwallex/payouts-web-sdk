@@ -1,3 +1,17 @@
+# [1.1.0](https://github.com/airwallex/payouts-web-sdk/compare/v1.0.3...v1.1.0) (2023-02-02)
+
+
+### Bug Fixes
+
+* change pipeline config ([cee2662](https://github.com/airwallex/payouts-web-sdk/commit/cee2662ce6ed8ff72e8f0beca0e4947b89916a4c))
+* revert ([6e5b961](https://github.com/airwallex/payouts-web-sdk/commit/6e5b9610b9d59dc69da46d1ca175ee0e030bd29c))
+
+
+### Features
+
+* add editorconfig ([56023c1](https://github.com/airwallex/payouts-web-sdk/commit/56023c1067131b72fce7619ff5f4785e2112825b))
+* change editorconfig ([3801453](https://github.com/airwallex/payouts-web-sdk/commit/38014539922ef65009127b42a201bf8fea2e4d5a))
+
 ## [1.0.3](https://github.com/airwallex/payouts-web-sdk/compare/v1.0.2...v1.0.3) (2023-02-01)
 
 
