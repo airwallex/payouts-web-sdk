@@ -72,8 +72,8 @@ export function loadScript(url: string) {
 
     try {
       const script =
-        document.querySelector(`script[src="${url}"], script[src="${url}/"]`) ||
-        injectScript(url);
+        document.querySelector(`script[src^="${url}"]`) ||
+        injectScript(`${url}?_t=${Date.now()}`);
 
       script.addEventListener('load', () => {
         resolve(window.AirwallexHostedTransfer!.default);
