@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/airwallex/payouts-web-sdk/compare/v1.1.0...v1.2.0) (2023-02-15)
+
+
+### Features
+
+* add release-to-gitlab job ([8420bc6](https://github.com/airwallex/payouts-web-sdk/commit/8420bc69d4a5915cc650b3f9a8dc5b326cb8432b))
+
 # [1.1.0](https://github.com/airwallex/payouts-web-sdk/compare/v1.0.3...v1.1.0) (2023-02-02)
 
 
