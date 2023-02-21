@@ -1,5 +1,5 @@
 import { HostedTransfer, Options } from './types';
-import { loadScript, resolveStaticOrigin } from './utils';
+import { loadScript, resolveStaticOrigin, SDKError, SDKErrorCodes } from './utils';
 
 declare global {
   interface Window {
@@ -22,7 +22,7 @@ export async function init(options: Options) {
   )}/widgets/hosted-transfer/sdk/${SDK_VERSION}/index.js`;
   const hostedTransfer = await loadScript(scriptUrl);
   if (!hostedTransfer) {
-    throw new Error('Failed when initialize Airwallex Payouts SDK');
+    throw new SDKError(SDKErrorCodes.FAILED_LOAD_SCRIPT);
   }
   await hostedTransfer.init(options);
   return hostedTransfer;
@@ -36,9 +36,7 @@ export async function init(options: Options) {
  */
 export function createElement(type: string, options?: Record<string, unknown>) {
   if (!window.AirwallexHostedTransfer?.default) {
-    throw new Error(
-      'Please initialize Airwallex Payouts SDK before createElement()'
-    );
+    throw new SDKError(SDKErrorCodes.CREATE_ELEMENT_ERROR);
   }
   return window.AirwallexHostedTransfer?.default.createElement(type, options);
 }
