@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/airwallex/payouts-web-sdk/compare/v1.2.0...v1.3.0) (2023-02-21)
+
+
+### Features
+
+* [GLOB-566] update docs and error codes ([#14](https://github.com/airwallex/payouts-web-sdk/issues/14)) ([ace3c58](https://github.com/airwallex/payouts-web-sdk/commit/ace3c589b844111a001186880d453b3ae221abd4))
+
 # [1.2.0](https://github.com/airwallex/payouts-web-sdk/compare/v1.1.0...v1.2.0) (2023-02-15)
 
 
