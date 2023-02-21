@@ -1,5 +1,30 @@
 import { Env, HostedTransfer } from './types';
 
+export class SDKError implements Error {
+  name = 'AirwallexPayoutSDKError';
+  message: string;
+  code: string;
+  constructor({ message, code }: { message?: string; code: string }) {
+    this.message = message || code;
+    this.code = code;
+  }
+}
+
+export const SDKErrorCodes = {
+  CREATE_ELEMENT_ERROR: {
+    code: 'CREATE_ELEMENT_ERROR',
+    message: 'Please init() before createElement()',
+  },
+  FAILED_LOAD_SCRIPT_NEED_BODY: {
+    code: 'FAILED_LOAD_SCRIPT',
+    message: 'Expected document.body not to be null, requires a <body> element.',
+  },
+  FAILED_LOAD_SCRIPT: {
+    code: 'FAILED_LOAD_SCRIPT',
+    message: 'Failed to load SDK script, please check your network',
+  },
+}
+
 /**
  * Get static resource origin based on URL host
  * @params env environment
@@ -34,9 +59,7 @@ export function injectScript(url: string) {
   const headOrBody = document.head || document.body;
 
   if (!headOrBody) {
-    throw new Error(
-      'Expected document.body not to be null, requires a <body> element.'
-    );
+    throw new SDKError(SDKErrorCodes.FAILED_LOAD_SCRIPT_NEED_BODY);
   }
 
   headOrBody.appendChild(script);
@@ -80,7 +103,7 @@ export function loadScript(url: string) {
       });
 
       script.addEventListener('error', () => {
-        reject(new Error('Failed to load Payouts SDK'));
+        reject(new SDKError(SDKErrorCodes.FAILED_LOAD_SCRIPT));
       });
     } catch (error) {
       reject(error);
