@@ -179,7 +179,8 @@ If you want to hide any fields or sections, make sure default values are provide
 ```ts
 import { createElement } from '@airwallex/payouts-web-sdk'
 
-// When you have collected address information from your beneficiaries and do not want to collect again using the component
+// When you have collected address information from your beneficiaries
+// and do not want to collect again using the component
 const beneficiaryComponentElement = sdk.createElement('beneficiaryForm',{
   customizations: {
     layout: [
@@ -188,7 +189,9 @@ const beneficiaryComponentElement = sdk.createElement('beneficiaryForm',{
   }
 });
 
-// When you have a preferred payment_method and local_clearing_system and only needs to collect bank details, you need to provide default values for the beneficiary bank conditions
+// When you have a preferred payment_method and local_clearing_system
+// and only needs to collect bank details, you need to provide default values
+// for the beneficiary bank conditions
 const beneficiaryComponentElement = sdk.createElement('beneficiaryForm',{
   defaultValues: {
     beneficiary: {
