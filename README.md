@@ -1,10 +1,12 @@
 # Airwallex Payouts Web SDK
 
-Airwallex Payouts Web SDK provides the Embedded Payout component and Embedded Beneficiary component which are pre-build UI elements for you to integrate into your own payout flow. Instead of building a native payout flow from scratch, you can now use them to deliver a payout experience that fully leverages Airwallex’s coverage while reducing development efforts and improving speed to market. 
+Airwallex Payouts Web SDK includes the Embedded Payout component and the Embedded Beneficiary component, which are pre-built UI elements you can integrate into your own user flows. Instead of building a flow from scratch, you can now use them to deliver a user experience that fully leverages Airwallex’s coverage while reducing development efforts and improving speed to market.
 
-## Demo
+## Demo and documentation
 
-To view and interact with the Embedded Payout component and Embedded Beneficiary component, checkout the [live demo site](https://demo.airwallex.com/widgets/embedded-components).
+To view and interact with the Embedded components, go to the [Embedded components demo site](https://demo.airwallex.com/widgets/embedded-components).
+
+To view the high-level integration sequence and a step-by-step guide, see our Product Docs for [Embedded Payout component](https://www.airwallex.com/docs/payouts__embedded-payout-component) and [Embedded Beneficiary component](https://www.airwallex.com/docs/payouts__embedded-beneficiary-component).
 
 
 ## Installation
@@ -37,7 +39,7 @@ await init(options);
 
 | Option         | Type     | Required? | Default value | Description                                                                                                                                                         |
 | :------------- | :------- | :-------- | :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `env`          | `string` | **NO**    | `prod`        | The Airwallex environment you want to integrate your application with. Options include: `staging`, `demo`, `prod`                                                   |
+| `env`          | `string` | **NO**    | `prod`        | The Airwallex environment you want to integrate your application with. Options include: `staging`, `demo`, `prod`                                                  |
 | `langKey`      | `string` | **NO**    | `en`          | Language. Options include: `en`, `zh`                                                                                                                               |
 | `clientId`     | `string` | **YES**   | -             | Your unique Client ID issued by Airwallex. You can find the client id on [`Airwallex WebApp - Developer - API Keys`](https://www.airwallex.com/app/account/apiKeys) |
 | `authCode`     | `string` | **YES**   | -             | Auth code to authenticate account retrieved from [`Embedded components API`](https://www.airwallex.com/docs/api#/Scale/Embedded_Components/Intro)                                                                    |
@@ -47,13 +49,13 @@ await init(options);
 
 | Code               | Message                                                           | Next Step                                                                                                                                                            |
 |--------------------|-------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| FAILED_LOAD_SCRIPT | Expected document.body not to be null, requires a <body> element. | Make sure you added SDK in client and with <body> element in HTML                                                                                                    |
+| FAILED_LOAD_SCRIPT | Expected document.body not to be null, requires a \<body\> element. | Make sure you added SDK in client and with \<body\> element in HTML                                                                                                    |
 | FAILED_LOAD_SCRIPT | Failed to load SDK script, please check your network              | Please check your network and try again                                                                                                                              |
 | INVALID_PARAMS     | Invalid {option_key}                                              | The SDK received an unsupported parameter while initializing. Please check the params table for valid options.                                                       |
 | INVALID_PARAMS     | No {parameter} provided                                           | Missing required parameter. Please check the params table for required options.                                                                                      |
 | UNAUTHORIZED       | `clientId`, `authCode` and `codeVerifier` do not match.           | Please check if the authentication was completed, the code verifier was generated successfully, and matching values are provided for the same authorization chain.   |
-| TOKEN_EXPIRED      | Refresh token expired                                             | The `refreshToken` might be expired (currently 1 hour). Please redo the entire flow to get a new authCode and initialize the SDK, and then create the element again. |
-| AUTH_TIMEOUT       | Auth timeout after 30 seconds, please check your network          | Timeout while authenticating. Please restart the entire flow to get a new authCode, initialize the component, and create the component again.                        |
+| TOKEN_EXPIRED      | Refresh token expired                                             | The `refreshToken` has expired (valid for 1 hour). Please restart the entire flow by retrieving a new authCode and initializing the SDK, and then create the element again. |
+| AUTH_TIMEOUT       | Auth timeout after 30 seconds, please check your network          | Please restart the entire flow to get a new authCode, initialize the component, and create the component again.                        |
 
 
 ## Create Element
@@ -71,7 +73,7 @@ const element = createElement(type, options);
 | Parameter | Type                              | Required? | Description                                                                                   |
 | :-------- | :-------------------------------- | :-------- | :-------------------------------------------------------------------------------------------- |
 | `type`    | `string`    | **YES**   | The type of element you are creating. Supported types: `payoutForm`, `beneficiaryForm`   |
-| `options` | `Record<string, unknown>`         | **NO**    | Options for creating an Element, which differ for each Element. Refer to the following table. |
+| `options` | `Record<string, unknown>`         | **NO**    | Options when creating an Element. Refer to the following table. |
 
 #### `options` object properties
 
@@ -84,14 +86,14 @@ const element = createElement(type, options);
 
 #### `defaultValues` object properties:
 
-Default values are followed by following schema
+Fields that can be specified with default values are listed in the objects below
 
 * Payout Component: [Payment Object defined in API docs](https://www.airwallex.com/docs/api#/Payouts/Payments/_api_v1_payments_create/post)
 * Beneficiary Component: [Beneficiary Object defined in API docs](https://www.airwallex.com/docs/api#/Payouts/Beneficiaries/_api_v1_beneficiaries_create/post)
 
 
 ```ts
-// Payout Component defaultValue type example
+// Field examples where defaultValue can be specified in the Payout component
 const type DefaultValues = {
   beneficiary_id?: string;
   source_currency?: string;
@@ -114,17 +116,23 @@ const type DefaultValues = {
 
 #### `customizations` object properties:
 
-Customizations supports you to get customize on Payout Component
+Customizations allow you to disable or hide some fields or UI components  from the Payout component
 
 | Supported Component                     | Property | Type   | Required | DefaultValue | Description                                                                                                          |
 |-----------------------------------------|----------|--------|----------|--------------|----------------------------------------------------------------------------------------------------------------------|
-| Payout Component, Beneficiary Component | fields   | Object | false    | undefined    | Individual field config on disable editing or hidden, encouraged to provide default value when using fields property |
-| Beneficiary Component                   | layout   | Object | false    | undefined    | Customize on rendering partial form                                                                                  |
+| Payout Component, Beneficiary Component | fields   | Object | false    | undefined    | Configuration for disabling or hiding individual fields. We recommend providing default values when using the fields property. |
+| Beneficiary Component                   | layout   | Object | false    | undefined    | Configuration for hiding certain groups of fields so you can render the form selectively.                                                                                  |
+| Payout Component, Beneficiary Component | ui   | Object | false    | undefined    | Configuration for hiding certain UI components. |
 
 #### `fields` object properties:
 ```ts
-// List of supported fields customization on Payout Component
+// Fields and UI components that can be customized in the Payout component
 const type Customizations = {
+  ui?: {
+    hideTransferFee?: boolean;
+    hideFeeConfig?: boolean;
+    hideFlightTime?: boolean;
+  },
   fields?: {
     source_currency?: {
       disabled: boolean;
@@ -164,14 +172,14 @@ const type Customizations = {
 
 #### `layout` object properties:
 
-Beneficiary Component could be divided into three sections, including conditions, bankDetails, entityInfo and address, we provide layout customization which is able to render partial part form.
+The beneficiary form contains information that can be grouped into three categories, the beneficiary bank conditions, bank details, and beneficiary details. You can render any part of the forms with the layout customization feature.
 
-Be aware If your want to hide conditions section, make sure you've passed all defaultValues for that section.
+If you want to hide any fields or sections, make sure default values are provided.
 
 ```ts
 import { createElement } from '@airwallex/payouts-web-sdk'
 
-// If you already collected address information and won't like to show it in SDK
+// When you have collected address information from your beneficiaries and do not want to collect again using the component
 const beneficiaryComponentElement = sdk.createElement('beneficiaryForm',{
   customizations: {
     layout: [
@@ -180,8 +188,7 @@ const beneficiaryComponentElement = sdk.createElement('beneficiaryForm',{
   }
 });
 
-// If you only like to collect bankDetails
-// Requires conditions fields are all provided
+// When you have a preferred payment_method and local_clearing_system and only needs to collect bank details, you need to provide default values for the beneficiary bank conditions
 const beneficiaryComponentElement = sdk.createElement('beneficiaryForm',{
   defaultValues: {
     beneficiary: {
@@ -204,7 +211,7 @@ const beneficiaryComponentElement = sdk.createElement('beneficiaryForm',{
 
 #### `theme` object properties:
 
-We support color theming for embedded components. To receive full support in recoloring your own color theme and design/branding requirements, please contact your Account Manager.
+We support theming for embedded components. To best match your branding needs with our comprehensive systems of themes, please contact your Account Manager so we can provide a tailored JSON for you to set the value of the theme property.
 
 ```ts
   const type ColorPattern = {
@@ -234,8 +241,8 @@ We support color theming for embedded components. To receive full support in rec
 
 | Code                 | Message                                    | Next Step                                                                                                            |
 |----------------------|--------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| INVALID_ELEMENT_TYPE | The component type passed is not supported | Please check the supported element types.                                                                            |
-| CREATE_ELEMENT_ERROR | Please init() before createElement()       | Please confirm you have correctly loaded the SDK script using the init() function from our package  or the CDN link. |
+| INVALID_ELEMENT_TYPE | The component type passed is not supported | Please check the supported element types and try again.                                                                            |
+| CREATE_ELEMENT_ERROR | Please init() before createElement()       | Please confirm you have correctly loaded the SDK script using the init() function from our package or the CDN link. |
 
 
 
@@ -250,20 +257,20 @@ interface Element {
    */
   mount(domElement: string | HTMLElement): void;
   /**
-   * Using this function to unmount the element, opposite to mount function
-   * The element instance is still kept
+   * Use this function to unmount the element
+   * The element instance remains
    */
   unmount(): void;
   /**
-   * Using this function to destroy the element instance
+   * Use this function to destroy the element instance
    */
   destroy(): void;
   /**
-   * Using this function to Submit form and get final form values
+   * Use this function to Submit form and get final formValues
    */
   submit(): FormValues
   /**
-   * Listen to event
+   * Listen to events
    */
   on(eventCode: EVENT_TYPE, handler: (eventData: Record<string, unknown>) => void): void;
 }
@@ -271,7 +278,7 @@ interface Element {
 
 ### Mount element
 
-After create element, mount the element to your page
+Once the element is created, mount it to your web page
 
 ```ts
 import { createElement } from '@airwallex/payouts-web-sdk';
@@ -288,9 +295,15 @@ element.mount(container);
 |---------------------------|------------------------------------|---------------------------------------------------------------------------------------------------|
 | MOUNT_CONTAINER_NOT_EXIST | The mount container does not exist | Please check if the container dom id or the dom element passed in the mount()  function is valid. |
 
-### Subscribe Events
+### Subscribe to Events
 
-Subscribe Events when form are interact with users
+Add event listeners to handle events received from Airwallex. Events can be used to facilitate other flows in your user interface where applicable. Please find more details in the list of events below.
+
+You can introduce different call-to-actions based on the user input by monitoring the values in the change event. For example, you can trigger an approval flow based on the source amount, i.e., when it is above a certain threshold amount, you can guide the user to go through a different user flow.
+
+You can also monitor errors as part of the formState event and provide additional guidance for the users so they can fix the errors. The list of possible errors can be found in the Errors and events section.
+
+The following types of events can be emitted during the lifecycle of the payoutComponent.
 
 #### `Ready`
 
@@ -302,7 +315,7 @@ element.on('ready', () => void);
 
 #### `Error`
 
-This event fires when the component in the page is mounted but failed to work with errors, handle these errors while occurs.
+This event fires when the component in the page is mounted but failed to work with errors. Handle these errors when they occur.
 
 ```ts
 element.on('error', () => void);
@@ -327,7 +340,7 @@ element.on('change', () => FormData);
 
 #### `FormState`
 
-This event fires when the Payout component’s form state changes. States include loading, validating, and errors during form rendering. 
+This event fires when the form state of the component changes. States include loading, validating, and errors during form rendering.
 
 ```ts
 type OnFormState = {
@@ -340,7 +353,7 @@ element.on('formState', (state: OnFormState) => void);
 ```
 #### Possible Error Codes
 
-Suggesting messages to surface on your user interface.
+You can map your own messages with the error codes below. The error  messages suggested by Airwallex are also available for your reference.
 
 
 | Component                               | Code                              | Description                                                                                                    | Next step                                                                                                                                         |
@@ -358,7 +371,7 @@ Suggesting messages to surface on your user interface.
 | Payout Component                        | INVALID_CURRENCY_PAIR             | The `sourceCurrency` and `paymentCurrency` combination specified is not supported or enabled for this account. | Provide a supported `sourceCurrency` and `paymentCurrency` pair.                                                                                  |
 | Payout Component                        | UNSUPPORTED_CURRENCY              | The currency specified is not supported or enabled for this account.                                           | Provide a valid sourceCurrency or paymentCurrency.                                                                                                |
 | Payout Component                        | MISSING_FEE_CONFIG                | There is a problem with this account’s  payout fee configuration.                                              | Contact your Account Manager and report this issue.                                                                                               |
-| Beneficiary Component                   | VALIDATION_FAILED                 | The request failed our schema validation                                                                       | Check the error on the form and change to correct value                                                                                           |
+| Beneficiary Component                   | VALIDATION_FAILED                 | The request failed our schema validation                                                                       | Check the errors on the form and update with accepted values.                                                                                           |
 
 
 
@@ -374,8 +387,8 @@ When you are ready to retrieve the final payload, you can call the submit functi
 #### Result payload
 | Supported Component                     | Property       | Type               | Description                                                                                                           |
 |-----------------------------------------|----------------|--------------------|-----------------------------------------------------------------------------------------------------------------------|
-| Payout Component, Beneficiary Component | values         | Object             | Values that the end-users specify in the component.                                                            |
-| Payout Component, Beneficiary Component | errors         | FormStateErrors | Errors surfaced in the component, checkout formState error part for details                                                                             |
+| Payout Component, Beneficiary Component | values         | Object             | Values that the users specify in the component.                                                            |
+| Payout Component, Beneficiary Component | errors         | FormStateErrors | Errors surfaced in the component. Check the formState errors for details.                                                                             |
 | Payout Component                        | additionalInfo | Object             | Additional information including the supported reasons that can be selected for the payout and the quote information. |
 
 
@@ -383,12 +396,12 @@ When you are ready to retrieve the final payload, you can call the submit functi
 
 ```ts
 const type AdditionalInfo = {
-  // The supported reasons for the payout method selected
+  // The supported reasons for the payment_method and local_clearing_system selected
   reasons: Array<{
     label: string;
     value: string;
   }>,
-  // The quote id used in the payout component alongside its validity, i.e., when it expires.                
+  // The quote id used in the payout component alongside its validity, i.e., when it expires.         
   quote: {
     id: string;
     validity: {
