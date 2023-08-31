@@ -16,7 +16,7 @@ module.exports = {
         contentDir: 'source',
         oneTrust: true,
         baseUrl: 'https://www.airwallex.com',
-        root: '/Users/shirly.chen/repos/payouts-web-sdk/docs',
+        root: __dirname,
         subtitle: '',
         navConfig: {
           'Payout form': {
