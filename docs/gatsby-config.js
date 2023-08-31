@@ -3,16 +3,16 @@ module.exports = {
   siteMetadata: {
     title: 'Airwallex',
     siteUrl: 'https://www.airwallex.com',
-    description: 'A guide to using airwallex payment elements sdk'
+    description: 'A guide to using airwallex payouts web sdk'
   },
   trailingSlash: 'never',
   plugins: [
     {
       resolve: '@airwallex/gatsby-theme-docs',
       options: {
-        siteName: 'payment elements sdk',
-        pageTitle: 'payment elements sdk',
-        menuTitle: 'payment elements sdk',
+        siteName: 'payouts web sdk',
+        pageTitle: 'payouts web sdk',
+        menuTitle: 'payouts web sdk',
         contentDir: 'source',
         oneTrust: true,
         baseUrl: 'https://www.airwallex.com',
@@ -26,7 +26,7 @@ module.exports = {
             omitLandingPage: true
           }
         },
-        description: 'A guide to using airwallex payment elements sdk',
+        description: 'A guide to using airwallex payouts web sdk',
         sidebarCategories: {
           null: [ 'sdk-reference/README' ],
           'sdk reference': {
