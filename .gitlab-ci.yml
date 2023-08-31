@@ -1,6 +1,6 @@
 include:
   - project: 'acquiring/gatsby-theme-airwallex-docs'
-    ref: master
+    ref: feat/APA-4945
     file: '/.gitlab-ci-doc.yml'
 
 default:
@@ -32,7 +32,6 @@ stages:
   - create-release
   - sync
   - build-doc
-  - build
   - deploy-doc-staging-bucket
   - approve
   - deploy-doc-prod-bucket 
