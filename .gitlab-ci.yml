@@ -30,6 +30,10 @@ stages:
   - build-and-test
   - create-release
   - sync
+  - build-doc
+  - deploy-doc-staging-bucket
+  - approve
+  - deploy-doc-prod-bucket 
 
 build:
   extends:
