@@ -28,9 +28,8 @@ module.exports = {
         },
         description: 'A guide to using airwallex payment elements sdk',
         sidebarCategories: {
-          null: [ 'index' ],
+          null: [ 'sdk-reference/README' ],
           'sdk reference': {
-            null: [ 'sdk-reference/README', 'sdk-reference/modules' ],
             functions: {
               null: [
                 'sdk-reference/functions/createElement',

@@ -1,6 +1,6 @@
 ---
-title: README
-description: README
+title: Technical overview
+description: Technical overview
 ---
 
 # Airwallex Payouts Web SDK
