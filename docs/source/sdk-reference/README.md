@@ -3,6 +3,9 @@ title: Technical overview
 description: Technical overview
 ---
 
+
+
+
 # Airwallex Payouts Web SDK
 
 Airwallex Payouts Web SDK includes the Embedded Payout component and the Embedded Beneficiary component, which are pre-built UI elements you can integrate into your own user flows. Instead of building a flow from scratch, you can now use them to deliver a user experience that fully leverages Airwallex’s coverage while reducing development efforts and improving speed to market.
