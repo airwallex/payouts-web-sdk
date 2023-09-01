@@ -1,6 +1,6 @@
 ---
-title: Technical overview
-description: A lightweight javascript SDK that allows merchants to conveniently integrate the Airwallex payouts web
+title: Technical overview 
+description: Airwallex Payouts Web SDK includes the Embedded Payout component and the Embedded Beneficiary component
 ---
 # Airwallex Payouts Web SDK
 

@@ -29,7 +29,7 @@ module.exports = {
         description: 'A guide to using airwallex payouts web sdk',
         sidebarCategories: {
           null: [ 'index' ],
-          'sdk reference': {
+          'sdk-reference': {
             functions: {
               null: [
                 'sdk-reference/functions/createElement',
@@ -44,7 +44,6 @@ module.exports = {
                 'sdk-reference/interfaces/internal_.Options'
               ]
             },
-            modules: { null: [ 'sdk-reference/modules/internal_' ] },
             types: {
               null: [
                 'sdk-reference/types/internal_.Env',

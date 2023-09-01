@@ -26,10 +26,10 @@
   resolved "https://gitlab.awx.im/api/v4/projects/3003/packages/npm/@airwallex/form-textinput/-/@airwallex/form-textinput-2.0.0-alpha.1.tgz#89e138e3be53c7ce2ffe0f77d2cf6e8126993fa9"
   integrity sha1-ieE4475Tx84v/g930s9ugSaZP6k=
 
-"@airwallex/gatsby-theme-docs@1.8.0-beta13":
-  version "1.8.0-beta13"
-  resolved "https://gitlab.awx.im/api/v4/projects/3003/packages/npm/@airwallex/gatsby-theme-docs/-/@airwallex/gatsby-theme-docs-1.8.0-beta13.tgz#d700ca1bacc03bd81a40b96892d86ec925c27dde"
-  integrity sha1-1wDKG6zAO9gaQLlokthuySXCfd4=
+"@airwallex/gatsby-theme-docs@1.8.0-beta14":
+  version "1.8.0-beta14"
+  resolved "https://gitlab.awx.im/api/v4/projects/3003/packages/npm/@airwallex/gatsby-theme-docs/-/@airwallex/gatsby-theme-docs-1.8.0-beta14.tgz#186c2ba9d2170642e2ae0dd0a82a9c61fec9c5b9"
+  integrity sha1-GGwrqdIXBkLirg3QqCqcYf7Jxbk=
   dependencies:
     "@airwallex/button" "5.0.0-alpha.1"
     "@airwallex/form-select" "^3.0.0-alpha.1"
