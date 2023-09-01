@@ -30,3 +30,4 @@ dist
 .history
 docs/.cache
 docs/public
+docs/source/sdk-reference
