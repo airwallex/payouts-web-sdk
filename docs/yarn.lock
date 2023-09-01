@@ -26,10 +26,10 @@
   resolved "https://gitlab.awx.im/api/v4/projects/3003/packages/npm/@airwallex/form-textinput/-/@airwallex/form-textinput-2.0.0-alpha.1.tgz#89e138e3be53c7ce2ffe0f77d2cf6e8126993fa9"
   integrity sha1-ieE4475Tx84v/g930s9ugSaZP6k=
 
-"@airwallex/gatsby-theme-docs@1.8.0-beta4":
-  version "1.8.0-beta4"
-  resolved "https://gitlab.awx.im/api/v4/projects/3003/packages/npm/@airwallex/gatsby-theme-docs/-/@airwallex/gatsby-theme-docs-1.8.0-beta4.tgz#58556cfd538e986ae6eef03bb9bf26a644a0d1b8"
-  integrity sha1-WFVs/VOOmGrm7vA7ub8mpkSg0bg=
+"@airwallex/gatsby-theme-docs@1.8.0-beta5":
+  version "1.8.0-beta5"
+  resolved "https://gitlab.awx.im/api/v4/projects/3003/packages/npm/@airwallex/gatsby-theme-docs/-/@airwallex/gatsby-theme-docs-1.8.0-beta5.tgz#2739e141ace7b35d775d9bd924b8a379a9e76003"
+  integrity sha1-JznhQazns113XZvZJLijeannYAM=
   dependencies:
     "@airwallex/button" "5.0.0-alpha.1"
     "@airwallex/form-select" "^3.0.0-alpha.1"
@@ -46,6 +46,7 @@
     "@jlengstorf/get-share-image" "^0.8.0"
     "@mdx-js/react" "^2.3.0"
     "@svgr/webpack" "^6.5.1"
+    "@tippyjs/react" "^4.2.6"
     "@types/react-helmet" "^6.1.6"
     apollo-algolia-autocomplete "^1.9.0"
     classnames "^2.3.2"
@@ -2509,6 +2510,11 @@
     "@pnpm/network.ca-file" "^1.0.1"
     config-chain "^1.1.11"
 
+"@popperjs/core@^2.9.0":
+  version "2.11.8"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.8.tgz#6b79032e760a0899cd4204710beede972a3a185f"
+  integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
+
 "@sideway/address@^4.1.3":
   version "4.1.4"
   resolved "https://registry.yarnpkg.com/@sideway/address/-/address-4.1.4.tgz#03dccebc6ea47fdc226f7d3d1ad512955d4783f0"
@@ -2696,6 +2702,13 @@
   integrity sha512-+PmQX0PiAYPMeVYe237LJAYvOMYW1j2rH5YROyS3b4CTVJum34HfRvKvAzozHAQG0TnHNdUfY9nCeUyRAs//cw==
   dependencies:
     defer-to-connect "^2.0.1"
+
+"@tippyjs/react@^4.2.6":
+  version "4.2.6"
+  resolved "https://registry.yarnpkg.com/@tippyjs/react/-/react-4.2.6.tgz#971677a599bf663f20bb1c60a62b9555b749cc71"
+  integrity sha512-91RicDR+H7oDSyPycI13q3b7o4O60wa2oRbjlz2fyRLmHImc4vyDwuUP8NtZaN0VARJY5hybvDYrFzhY9+Lbyw==
+  dependencies:
+    tippy.js "^6.3.1"
 
 "@tokenizer/token@^0.3.0":
   version "0.3.0"
@@ -12387,6 +12400,13 @@ timers-ext@^0.1.7:
   dependencies:
     es5-ext "~0.10.46"
     next-tick "1"
+
+tippy.js@^6.3.1:
+  version "6.3.7"
+  resolved "https://registry.yarnpkg.com/tippy.js/-/tippy.js-6.3.7.tgz#8ccfb651d642010ed9a32ff29b0e9e19c5b8c61c"
+  integrity sha512-E1d3oP2emgJ9dRQZdf3Kkn0qJgI6ZLpyS5z6ZkY1DF3kaQaBsGZsndEpHwx+eC+tYM41HaSNvNtLx8tU57FzTQ==
+  dependencies:
+    "@popperjs/core" "^2.9.0"
 
 title-case@^3.0.3:
   version "3.0.3"
