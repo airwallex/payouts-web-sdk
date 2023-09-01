@@ -1,6 +1,6 @@
 include:
   - project: 'acquiring/gatsby-theme-airwallex-docs'
-    ref: feat/APA-4945
+    ref: master
     file: '/.gitlab-ci-doc.yml'
 
 default:
