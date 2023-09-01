@@ -45,7 +45,7 @@ function processFiles(fileDir) {
     // Add the title to the beginning of the file
     if (!contents.startsWith('---') && title !== 'README') {
       contents = `---\ntitle: ${title}\ndescription: ${title}\n---\n\n${contents}`;
-    } else if (!contents.startsWith('---')&& title === 'README') {
+    } else if (!contents.startsWith('---') && title === 'README') {
       contents = `---\ntitle: Technical overview\ndescription: Technical overview\n---\n\n${contents}`;
     }
     contents = contents.replace(/#### Defined in\n\n(.*)\.ts\:[0-9]+\n/g, '');
