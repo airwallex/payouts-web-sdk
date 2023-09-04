@@ -8,7 +8,7 @@ module.exports = {
     excludeExternals: true,
     includeVersion: true,
     readme: 'README.md',
-    name: 'payouts=web-sdk',
+    name: 'payouts-web-sdk',
     categorizeByGroup: true,
     mergeModulesRenameDefaults: true,
     allReflectionsHaveOwnDocument: true,
