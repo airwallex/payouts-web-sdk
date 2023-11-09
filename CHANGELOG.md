@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/airwallex/payouts-web-sdk/compare/v1.3.0...v1.4.0) (2023-11-09)
+
+
+### Features
+
+* add function types for AlrwallexElement ([63a2d51](https://github.com/airwallex/payouts-web-sdk/commit/63a2d51003e124fad8e4ac52db7b7398317972ae))
+
 # [1.3.0](https://github.com/airwallex/payouts-web-sdk/compare/v1.2.0...v1.3.0) (2023-02-21)
 
 
