@@ -1,7 +1,7 @@
 import { AirwallexElement } from './element';
 
 export type Env = 'staging' | 'demo' | 'prod';
-export type LangKey = 'en' | 'zh';
+export type LangKey = 'de' | 'en' | 'es' | 'fr' | 'it' | 'ja' | 'ko' | 'zh';
 
 export interface Options {
   /** language key */
