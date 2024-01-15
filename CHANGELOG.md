@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/airwallex/payouts-web-sdk/compare/v1.4.0...v1.5.0) (2024-01-15)
+
+
+### Features
+
+* support new range of languages ([0b28fd9](https://github.com/airwallex/payouts-web-sdk/commit/0b28fd961bcf0b7ee665ad1724d02b13380be0ce))
+
 # [1.4.0](https://github.com/airwallex/payouts-web-sdk/compare/v1.3.0...v1.4.0) (2023-11-09)
 
 
