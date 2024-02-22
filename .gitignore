@@ -25,3 +25,9 @@ yarn-error.log*
 
 dist
 .env
+
+# docs build file
+.history
+docs/.cache
+docs/public
+docs/source/sdk-reference

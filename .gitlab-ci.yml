@@ -1,9 +1,16 @@
+include:
+  - project: 'acquiring/gatsby-theme-airwallex-docs'
+    ref: master
+    file: '/.gitlab-ci-doc.yml'
+
 default:
   image: node:16.14.0
 
 variables:
   KUBERNETES_CPU_REQUEST: 4
   KUBERNETES_CPU_LIMIT: 4
+  DOC_PATH_PREFIX: "payouts-web"
+  GCS_UPLOAD_TAG: "acquiring"
   KUBERNETES_MEMORY_REQUEST: 8Gi
   KUBERNETES_MEMORY_LIMIT: 8Gi
 
@@ -25,6 +32,10 @@ stages:
   - build-and-test
   - create-release
   - sync
+  - build-doc
+  - deploy-doc-staging-bucket
+  - approve
+  - deploy-doc-prod-bucket 
 
 build:
   extends:
